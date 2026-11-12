@@ -34,9 +34,11 @@
     - Link styling using `link-style`: `"color"`, `"underline"`, `"both"`
   - Font selection using `font: "Fira Sans"`, `size: 21pt`.
 
-  #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
+  #framed[This text has been written using `#framed(text)`. The background color of the box is
+    customisable.]
 
-  #framed(title: "Frame with title")[This text has been written using `#framed(title:"Frame with title")[text]`.]
+  #framed(title: "Frame with title")[This text has been written using
+    `#framed(title:"Frame with title")[text]`.]
 ]
 
 // Focus slide
@@ -51,7 +53,9 @@
   - Available #stress[themes]#footnote[Use them as *color* functions! e.g., `#reddy("your text")`]:
 
   #framed(back-color: white)[
-    #bluey("bluey"), #reddy("reddy"), #greeny("greeny"), #yelly("yelly"), #purply("purply"), #dusky("dusky"), darky.
+    #bluey("bluey"), #reddy("reddy"), #greeny("greeny"), #yelly("yelly"), #purply("purply"), #dusky(
+      "dusky",
+    ), darky.
   ]
 
   // #show: typslides.with(
@@ -59,7 +63,7 @@
   //   theme: "bluey",
   //   ...
   // )
-  
+
 
   - Or just use *your own theme color*:
     - `theme: rgb("30500B")`
