@@ -22,7 +22,6 @@ build/*
 '*
 *.ii
 *.i
-*.pdf
 *~
 *.sol
 *.ll
