@@ -208,8 +208,6 @@
     - $delta_i in {0,1}$ - *decyzja*: zatrudnić? przyznać kredyt?
 
     #v(0.2cm)
-    #text(size: 14pt, fill: muted)[$y_i$ często nie jest obserwowane. Algorytm widzi $x_i, a_i$ i
-      przewiduje $y_i$.]
   ][
     #align(center)[
       #table(
@@ -240,8 +238,7 @@
 
   #v(0.2cm)
   #callout[
-    Większość metryk fairness to *różne sposoby porównywania tych samych liczb* między grupami.
-    Dlatego wybór metryki jest wyborem ideologiczny.
+    Wybór metryki często jest wyborem ideologiczny z uwagi na różne możliwości interpretacji.
   ]
 ]
 
@@ -255,7 +252,10 @@
         *Disparate treatment:* świadome różnicowanie ze względu na atrybut wrażliwy. W wielu
         systemach prawnych (np. USA) - zakazane.
         #v(0.15cm)
-        #text(size: 13pt, fill: muted)[Np. „kobiety zatrudniamy na innych zasadach niż mężczyzn”.]
+        #text(
+          size: 13pt,
+          fill: muted,
+        )[Np. „kobiety zatrudniamy na innych zasadach niż mężczyzn”.]
       ],
       color: red,
       fill: rgb("#FDF0EF"),
@@ -267,7 +267,10 @@
         *Disparate impact:* pozornie neutralna reguła, która systematycznie gorzej traktuje jedną
         grupę. *Nie jest intencjonalne.*
         #v(0.15cm)
-        #text(size: 13pt, fill: muted)[Np. test sprawnościowy, który nie jest potrzebny do pracy,
+        #text(
+          size: 13pt,
+          fill: muted,
+        )[Np. test sprawnościowy, który nie jest potrzebny do pracy,
           ale odsiewa jedną grupę.]
       ],
       color: warm,
@@ -337,7 +340,10 @@
         $"PPV"_0 = "PPV"_1$ #linebreak() Wśród osób z *pozytywną decyzją* odsetek faktycznie
         kwalifikowanych jest podobny w grupach.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Odpowiada na pytanie pracodawcy: „czy zatrudnieni są
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Odpowiada na pytanie pracodawcy: „czy zatrudnieni są
           dobrzy?”]
       ],
       color: accent,
@@ -349,7 +355,10 @@
       [
         Przewidywane ryzyko zgadza się z *obserwowaną częstością* w grupach.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Dobre narzędzie audytu, ale samo nie rozstrzyga, czy
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Dobre narzędzie audytu, ale samo nie rozstrzyga, czy
           decyzja jest sprawiedliwa.]
       ],
       color: warm,
@@ -361,7 +370,10 @@
       [
         Podobne osoby powinny dostawać podobne decyzje.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Problem: jak zdefiniować „podobne”? Metryka podobieństwa
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Problem: jak zdefiniować „podobne”? Metryka podobieństwa
           też jest wyborem wartości.]
       ],
       color: green,
@@ -393,7 +405,10 @@
         #v(0.1cm)
         Rozkład decyzji jest *taki sam w każdej grupie*. Równoważnie: I(δ; a) = 0.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Parytet demograficzny, reguła 80%. Wariant warunkowy: w obrębie „legalnych” cech.]
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Parytet demograficzny, reguła 80%. Wariant warunkowy: w obrębie „legalnych” cech.]
       ],
       color: accent,
       fill: soft,
@@ -406,7 +421,10 @@
         #v(0.1cm)
         Przy binarnym $y$: *równe TPR i FPR* (wyrównane odds). Samo TPR to równe szanse.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Decyzja może zależeć od $a$ tylko tyle, ile zależy od niego $y$.]
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Decyzja może zależeć od $a$ tylko tyle, ile zależy od niego $y$.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
@@ -419,7 +437,10 @@
         #v(0.1cm)
         Przy binarnym $y$: *równe PPV i NPV*; dla wyniku ciągłego - kalibracja.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Perspektywa pracodawcy: co znaczy decyzja pozytywna?]
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Perspektywa pracodawcy: co znaczy decyzja pozytywna?]
       ],
       color: green,
       fill: rgb("#EDF7EE"),
@@ -443,7 +464,9 @@
 
 #s("Nie da się mieć wszystkiego naraz")[
   #set text(size: 14pt)
-  #theorem("Twierdzenie (Kleinberg, Mullainathan & Raghavan, 2016; Chouldechova, 2017)")[
+  #theorem(
+    "Twierdzenie (Kleinberg, Mullainathan & Raghavan, 2016; Chouldechova, 2017)",
+  )[
     #set text(size: 14pt)
     Parytet predykcyjny *i* wyrównane odds można spełnić jednocześnie *tylko wtedy*, gdy model jest
     *doskonałym predyktorem* *albo* grupy mają *równe base rates*.
@@ -611,7 +634,10 @@
       table.header(
         table.cell(fill: accent)[#text(fill: white, weight: "bold")[Dataset]],
         table.cell(fill: accent)[#text(fill: white, weight: "bold")[Domena]],
-        table.cell(fill: accent)[#text(fill: white, weight: "bold")[Atrybut wrażliwy]],
+        table.cell(fill: accent)[#text(
+          fill: white,
+          weight: "bold",
+        )[Atrybut wrażliwy]],
       ),
       [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa; płeć],
       [Adult], [dochody], [wiek; płeć],
@@ -825,7 +851,10 @@
 
   #v(0.25cm)
   #callout(color: accent, fill: soft)[
-    #text(size: 18pt, weight: "bold")[Sprawiedliwość algorytmu to nie własność kodu.] #text(
+    #text(
+      size: 18pt,
+      weight: "bold",
+    )[Sprawiedliwość algorytmu to nie własność kodu.] #text(
       size: 18pt,
     )[To decyzja o tym, jakie błędy akceptujemy i kogo chronimy.]
   ]
