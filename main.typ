@@ -208,10 +208,8 @@
     - $delta_i in {0,1}$ - *decyzja*: zatrudnić? przyznać kredyt?
 
     #v(0.2cm)
-    #text(
-      size: 14pt,
-      fill: muted,
-    )[$y_i$ często nie jest obserwowane. Algorytm widzi $x_i, a_i$ i przewiduje $y_i$.]
+    #text(size: 14pt, fill: muted)[$y_i$ często nie jest obserwowane. Algorytm widzi $x_i, a_i$ i
+      przewiduje $y_i$.]
   ][
     #align(center)[
       #table(
@@ -257,10 +255,7 @@
         *Disparate treatment:* świadome różnicowanie ze względu na atrybut wrażliwy. W wielu
         systemach prawnych (np. USA) - zakazane.
         #v(0.15cm)
-        #text(
-          size: 13pt,
-          fill: muted,
-        )[Np. „kobiety zatrudniamy na innych zasadach niż mężczyzn”.]
+        #text(size: 13pt, fill: muted)[Np. „kobiety zatrudniamy na innych zasadach niż mężczyzn”.]
       ],
       color: red,
       fill: rgb("#FDF0EF"),
@@ -272,10 +267,8 @@
         *Disparate impact:* pozornie neutralna reguła, która systematycznie gorzej traktuje jedną
         grupę. *Nie jest intencjonalne.*
         #v(0.15cm)
-        #text(
-          size: 13pt,
-          fill: muted,
-        )[Np. test sprawnościowy, który nie jest potrzebny do pracy, ale odsiewa jedną grupę.]
+        #text(size: 13pt, fill: muted)[Np. test sprawnościowy, który nie jest potrzebny do pracy,
+          ale odsiewa jedną grupę.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
@@ -344,10 +337,8 @@
         $"PPV"_0 = "PPV"_1$ #linebreak() Wśród osób z *pozytywną decyzją* odsetek faktycznie
         kwalifikowanych jest podobny w grupach.
         #v(0.1cm)
-        #text(
-          size: 12.5pt,
-          fill: muted,
-        )[Odpowiada na pytanie pracodawcy: „czy zatrudnieni są dobrzy?”]
+        #text(size: 12.5pt, fill: muted)[Odpowiada na pytanie pracodawcy: „czy zatrudnieni są
+          dobrzy?”]
       ],
       color: accent,
       fill: soft,
@@ -358,10 +349,8 @@
       [
         Przewidywane ryzyko zgadza się z *obserwowaną częstością* w grupach.
         #v(0.1cm)
-        #text(
-          size: 12.5pt,
-          fill: muted,
-        )[Dobre narzędzie audytu, ale samo nie rozstrzyga, czy decyzja jest sprawiedliwa.]
+        #text(size: 12.5pt, fill: muted)[Dobre narzędzie audytu, ale samo nie rozstrzyga, czy
+          decyzja jest sprawiedliwa.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
@@ -372,10 +361,8 @@
       [
         Podobne osoby powinny dostawać podobne decyzje.
         #v(0.1cm)
-        #text(
-          size: 12.5pt,
-          fill: muted,
-        )[Problem: jak zdefiniować „podobne”? Metryka podobieństwa też jest wyborem wartości.]
+        #text(size: 12.5pt, fill: muted)[Problem: jak zdefiniować „podobne”? Metryka podobieństwa
+          też jest wyborem wartości.]
       ],
       color: green,
       fill: rgb("#EDF7EE"),
@@ -391,53 +378,125 @@
   ]
 
   #callout[
-    *Metryka to wybór wartości.* Nie ma „obiektywnej” metryki, która rozstrzyga spór bez założenia,
-    kogo i przed czym chronimy.
+    *Metryka to wybór wartości.* Nie ma „obiektywnej” metryki 😩, która rozstrzyga spór bez
+    założenia, kogo i przed czym chronimy.
   ]
 ]
 
-#s("Nie da się mieć wszystkiego naraz")[
-  #set text(size: 15pt)
-  #theorem("Twierdzenie (Kleinberg, Mullainathan & Raghavan, 2016)")[
-    #set text(size: 14.5pt)
-    Parytet predykcyjny *i* wyrównane odds można spełnić jednocześnie *tylko wtedy*, gdy model jest
-    *perfect predictor* *albo* grupy mają *równe base rates*.
-  ]
-
-  #v(0.15cm)
-  #cols(columns: (1.05fr, 1fr), gutter: 0.45cm)[
+#s("Trzy kryteria: niezależność, separacja, wystarczalność")[
+  #set text(size: 14pt)
+  #cols(columns: (1fr, 1fr, 1fr), gutter: 0.35cm)[
     #card(
-      "Co to znaczy w praktyce",
+      "Niezależność",
       [
-        - Jeśli grupy różnią się częstością wyniku, *każdy nietrywialny klasyfikator* będzie
-          „niesprawiedliwy” według którejś metryki.
-        - Nie jest to wada implementacji ani „leniwego” modelu.
-        - To *arytmetyka* warunkowych prawdopodobieństw.
+        $delta perp a$
+        #v(0.1cm)
+        Rozkład decyzji jest *taki sam w każdej grupie*. Równoważnie: I(δ; a) = 0.
+        #v(0.1cm)
+        #text(size: 12.5pt, fill: muted)[Parytet demograficzny, reguła 80%. Wariant warunkowy: w obrębie „legalnych” cech.]
       ],
       color: accent,
       fill: soft,
     )
   ][
     #card(
+      "Separacja",
+      [
+        $delta perp a | y$
+        #v(0.1cm)
+        Przy binarnym $y$: *równe TPR i FPR* (wyrównane odds). Samo TPR to równe szanse.
+        #v(0.1cm)
+        #text(size: 12.5pt, fill: muted)[Decyzja może zależeć od $a$ tylko tyle, ile zależy od niego $y$.]
+      ],
+      color: warm,
+      fill: rgb("#FBF4EA"),
+    )
+  ][
+    #card(
+      "Wystarczalność",
+      [
+        $y perp a | delta$
+        #v(0.1cm)
+        Przy binarnym $y$: *równe PPV i NPV*; dla wyniku ciągłego - kalibracja.
+        #v(0.1cm)
+        #text(size: 12.5pt, fill: muted)[Perspektywa pracodawcy: co znaczy decyzja pozytywna?]
+      ],
+      color: green,
+      fill: rgb("#EDF7EE"),
+    )
+  ]
+
+  #v(0.1cm)
+  #theorem("Czego nie da się mieć jednocześnie")[
+    #set text(size: 13.5pt)
+    - *niezależność i separacja* - gdy $y$ zależy od $a$, a decyzja od $y$ (poza przypadkami trywialnymi);
+    - *separacja i wystarczalność* - gdy rozkład łączny ma dodatnie prawdopodobieństwo wszystkich wartości, a $y$ zależy od $a$.
+  ]
+
+  #callout(color: red, fill: rgb("#FDF0EF"))[
+    *Total fairness* - spełnienie wszystkich trzech naraz - jest możliwe tylko w przypadkach zdegenerowanych.
+    Każdy warunek można osłabić do tolerancji $epsilon$.
+  ]
+  #source[Barocas, Hardt & Narayanan, _Fairness and Machine Learning_; Verma & Rubin (2018); por. Wikipedia: _Fairness (machine learning)_.]
+]
+
+
+#s("Nie da się mieć wszystkiego naraz")[
+  #set text(size: 14pt)
+  #theorem("Twierdzenie (Kleinberg, Mullainathan & Raghavan, 2016; Chouldechova, 2017)")[
+    #set text(size: 14pt)
+    Parytet predykcyjny *i* wyrównane odds można spełnić jednocześnie *tylko wtedy*, gdy model jest
+    *doskonałym predyktorem* *albo* grupy mają *równe base rates*.
+  ]
+
+  #v(0.15cm)
+  #cols(columns: (1.15fr, 1fr), gutter: 0.45cm)[
+    *Przykład liczbowy:* w obu grupach te same błędy: TPR = 0,8 i FPR = 0,2.
+    #v(0.1cm)
+    #table(
+      columns: (1.7fr, 1fr, 1fr),
+      stroke: 0.5pt + luma(180),
+      inset: (x: 0.2cm, y: 0.14cm),
+      align: (left + horizon, center + horizon, center + horizon),
+      table.header(
+        table.cell(fill: accent)[],
+        table.cell(fill: accent)[#text(fill: white, weight: "bold")[Grupa A]],
+        table.cell(fill: accent)[#text(fill: white, weight: "bold")[Grupa B]],
+      ),
+      [kandydaci], [100], [100],
+      [kwalifikowani (base rate)], [50 (50%)], [20 (20%)],
+      [przyjęci kwalifikowani (TP)], [40], [16],
+      [przyjęci niekwalifikowani (FP)], [10], [16],
+      table.cell(fill: rgb("#FDF0EF"))[*PPV*],
+      table.cell(fill: rgb("#FDF0EF"))[*0,80*],
+      table.cell(fill: rgb("#FDF0EF"))[*0,50*],
+    )
+  ][
+    #card(
+      "Dlaczego tak się dzieje?",
+      [
+        $ "TPR" = frac("TP", "TP" + "FN") quad "PPV" = frac("TP", "TP" + "FP") $
+        Ten sam licznik, *różne mianowniki*. Gdy base rates się różnią, mianowniki się rozjeżdżają.
+      ],
+      color: accent,
+      fill: soft,
+    )
+    #card(
       "Chouldechova (2017)",
       [
-        Parytet predykcyjny (PPV) i wyrównane odds są niezgodne, *chyba że* base rates są równe albo
+        Niezależny dowód: PPV i wyrównane odds są niezgodne, *chyba że* base rates są równe albo
         model nie dopuszcza fałszywych alarmów.
-        #v(0.1cm)
-        #text(
-          size: 13pt,
-          fill: muted,
-        )[Niezależny dowód - ten sam wniosek, inna droga.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
     )
   ]
 
-  #v(0.15cm)
+  #v(0.1cm)
   #callout(color: red, fill: rgb("#FDF0EF"))[
-    *Wniosek:* spór o fairness nie jest sporem o to, „czy algorytm jest dobry”. Jest sporem o to,
-    *które błędy akceptujemy i kogo chronimy*.
+    *Wniosek:* spór o fairness nie dotyczy tego, „czy algorytm jest dobry”, lecz tego, *które błędy
+    akceptujemy i kogo chronimy*. To nie wada implementacji, tylko arytmetyka prawdopodobieństw
+    warunkowych.
   ]
 ]
 
@@ -552,16 +611,13 @@
       table.header(
         table.cell(fill: accent)[#text(fill: white, weight: "bold")[Dataset]],
         table.cell(fill: accent)[#text(fill: white, weight: "bold")[Domena]],
-        table.cell(fill: accent)[#text(
-          fill: white,
-          weight: "bold",
-        )[Atrybut wrażliwy]],
+        table.cell(fill: accent)[#text(fill: white, weight: "bold")[Atrybut wrażliwy]],
       ),
-      [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa, płeć],
-      [Adult], [dochody], [wiek, płeć],
-      [German Credit], [kredyty], [płeć, wiek],
+      [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa; płeć],
+      [Adult], [dochody], [wiek; płeć],
+      [German Credit], [kredyty], [płeć; wiek],
       [Ricci], [awans], [rasa],
-      [College Admissions], [edukacja], [płeć, rasa],
+      [College Admissions], [edukacja], [płeć; rasa],
       [Dutch Census], [census], [płeć],
     )
   ][
@@ -769,10 +825,7 @@
 
   #v(0.25cm)
   #callout(color: accent, fill: soft)[
-    #text(
-      size: 18pt,
-      weight: "bold",
-    )[Sprawiedliwość algorytmu to nie własność kodu.] #text(
+    #text(size: 18pt, weight: "bold")[Sprawiedliwość algorytmu to nie własność kodu.] #text(
       size: 18pt,
     )[To decyzja o tym, jakie błędy akceptujemy i kogo chronimy.]
   ]
