@@ -208,8 +208,10 @@
     - $delta_i in {0,1}$ - *decyzja*: zatrudnić? przyznać kredyt?
 
     #v(0.2cm)
-    #text(size: 14pt, fill: muted)[$y_i$ często nie jest obserwowane. Algorytm widzi $x_i, a_i$ i
-      przewiduje $y_i$.]
+    #text(
+      size: 14pt,
+      fill: muted,
+    )[$y_i$ często nie jest obserwowane. Algorytm widzi $x_i, a_i$ i przewiduje $y_i$.]
   ][
     #align(center)[
       #table(
@@ -255,7 +257,10 @@
         *Disparate treatment:* świadome różnicowanie ze względu na atrybut wrażliwy. W wielu
         systemach prawnych (np. USA) - zakazane.
         #v(0.15cm)
-        #text(size: 13pt, fill: muted)[Np. „kobiety zatrudniamy na innych zasadach niż mężczyzn”.]
+        #text(
+          size: 13pt,
+          fill: muted,
+        )[Np. „kobiety zatrudniamy na innych zasadach niż mężczyzn”.]
       ],
       color: red,
       fill: rgb("#FDF0EF"),
@@ -267,8 +272,10 @@
         *Disparate impact:* pozornie neutralna reguła, która systematycznie gorzej traktuje jedną
         grupę. *Nie jest intencjonalne.*
         #v(0.15cm)
-        #text(size: 13pt, fill: muted)[Np. test sprawnościowy, który nie jest potrzebny do pracy,
-          ale odsiewa jedną grupę.]
+        #text(
+          size: 13pt,
+          fill: muted,
+        )[Np. test sprawnościowy, który nie jest potrzebny do pracy, ale odsiewa jedną grupę.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
@@ -337,8 +344,10 @@
         $"PPV"_0 = "PPV"_1$ #linebreak() Wśród osób z *pozytywną decyzją* odsetek faktycznie
         kwalifikowanych jest podobny w grupach.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Odpowiada na pytanie pracodawcy: „czy zatrudnieni są
-          dobrzy?”]
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Odpowiada na pytanie pracodawcy: „czy zatrudnieni są dobrzy?”]
       ],
       color: accent,
       fill: soft,
@@ -349,8 +358,10 @@
       [
         Przewidywane ryzyko zgadza się z *obserwowaną częstością* w grupach.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Dobre narzędzie audytu, ale samo nie rozstrzyga, czy
-          decyzja jest sprawiedliwa.]
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Dobre narzędzie audytu, ale samo nie rozstrzyga, czy decyzja jest sprawiedliwa.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
@@ -361,8 +372,10 @@
       [
         Podobne osoby powinny dostawać podobne decyzje.
         #v(0.1cm)
-        #text(size: 12.5pt, fill: muted)[Problem: jak zdefiniować „podobne”? Metryka podobieństwa
-          też jest wyborem wartości.]
+        #text(
+          size: 12.5pt,
+          fill: muted,
+        )[Problem: jak zdefiniować „podobne”? Metryka podobieństwa też jest wyborem wartości.]
       ],
       color: green,
       fill: rgb("#EDF7EE"),
@@ -378,8 +391,8 @@
   ]
 
   #callout[
-    *Metryka to wybór wartości.* Nie ma „obiektywnej” metryki 😩, która rozstrzyga spór bez
-    założenia, kogo i przed czym chronimy.
+    *Metryka to wybór wartości.* Nie ma „obiektywnej” metryki, która rozstrzyga spór bez założenia,
+    kogo i przed czym chronimy.
   ]
 ]
 
@@ -411,7 +424,10 @@
         Parytet predykcyjny (PPV) i wyrównane odds są niezgodne, *chyba że* base rates są równe albo
         model nie dopuszcza fałszywych alarmów.
         #v(0.1cm)
-        #text(size: 13pt, fill: muted)[Niezależny dowód - ten sam wniosek, inna droga.]
+        #text(
+          size: 13pt,
+          fill: muted,
+        )[Niezależny dowód - ten sam wniosek, inna droga.]
       ],
       color: warm,
       fill: rgb("#FBF4EA"),
@@ -536,13 +552,16 @@
       table.header(
         table.cell(fill: accent)[#text(fill: white, weight: "bold")[Dataset]],
         table.cell(fill: accent)[#text(fill: white, weight: "bold")[Domena]],
-        table.cell(fill: accent)[#text(fill: white, weight: "bold")[Atrybut wrażliwy]],
+        table.cell(fill: accent)[#text(
+          fill: white,
+          weight: "bold",
+        )[Atrybut wrażliwy]],
       ),
-      [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa; płeć],
-      [Adult], [dochody], [wiek; płeć],
-      [German Credit], [kredyty], [płeć; wiek],
+      [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa, płeć],
+      [Adult], [dochody], [wiek, płeć],
+      [German Credit], [kredyty], [płeć, wiek],
       [Ricci], [awans], [rasa],
-      [College Admissions], [edukacja], [płeć; rasa],
+      [College Admissions], [edukacja], [płeć, rasa],
       [Dutch Census], [census], [płeć],
     )
   ][
@@ -750,7 +769,10 @@
 
   #v(0.25cm)
   #callout(color: accent, fill: soft)[
-    #text(size: 18pt, weight: "bold")[Sprawiedliwość algorytmu to nie własność kodu.] #text(
+    #text(
+      size: 18pt,
+      weight: "bold",
+    )[Sprawiedliwość algorytmu to nie własność kodu.] #text(
       size: 18pt,
     )[To decyzja o tym, jakie błędy akceptujemy i kogo chronimy.]
   ]
