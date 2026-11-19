@@ -608,7 +608,7 @@
         - decoupled classifiers.
         #v(0.15cm)
         #text(fill: green)[*+*] działa z gotowym modelem #linebreak() #text(fill: red)[*−*] późno,
-        często gorsze wyniki; wymaga atrybutu w test time
+        często gorsze wyniki.
       ],
       color: green,
       fill: rgb("#EDF7EE"),
@@ -639,11 +639,11 @@
           weight: "bold",
         )[Atrybut wrażliwy]],
       ),
-      [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa; płeć],
-      [Adult], [dochody], [wiek; płeć],
-      [German Credit], [kredyty], [płeć; wiek],
+      [COMPAS / ProPublica], [wymiar sprawiedliwości], [rasa, płeć],
+      [Adult], [dochody], [wiek, płeć],
+      [German Credit], [kredyty], [płeć, wiek],
       [Ricci], [awans], [rasa],
-      [College Admissions], [edukacja], [płeć; rasa],
+      [College Admissions], [edukacja], [płeć, rasa],
       [Dutch Census], [census], [płeć],
     )
   ][
